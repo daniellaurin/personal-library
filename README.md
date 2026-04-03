@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="/images/book.png" alt="Personal Library Banner" width="400">
+  <img src="/images/book.png" alt="Personal Library Banner" width="200">
   <br/>
   <br/>
   📚 Personal Library
