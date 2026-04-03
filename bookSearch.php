@@ -35,7 +35,7 @@ require_once 'includes/header.php';
 <script>
 /*  google books api config  */
 /* replace the empty string below with your google books api key */
-const API_KEY = 'AIzaSyBX80CBQ-NU10yoDlcJoPepwnJTIvyrD-I';
+const API_KEY = 'KEY-HERE';
 const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 
 /*  search handler  */
