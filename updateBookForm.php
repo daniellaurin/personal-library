@@ -1,77 +1,65 @@
-<!DOCTYPE html>
-<html>
+<?php
+/*
+ * file: updateBookForm.php
+ * description: form to update a book's author name. looks up all books from the db
+ * to populate the datalist autocomplete for the title field.
+ */
 
-<head>
-    <title>UPDATE Books Database</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
+$base        = '';
+$pageTitle   = 'EDIT BOOK';
+$pageDesc    = 'Update a book record in the Personal Library.';
+$currentPage = 'library';
+require_once 'includes/auth.php';
+require_once 'includes/db.php';
+requireAdmin();
 
-<body>
-    <div>
-        <h3>Enter the book Author's Name for the Book that you wish to UPDATE in the database</h3>
+$db     = getDB();
+$result = mysqli_query($db, 'SELECT id, title FROM Books ORDER BY title');
+mysqli_close($db);
 
-        <?php
-        // Include database connection variables
-        require_once('databaseConnectionVariables.php');
+$message = '';
+if (isset($_GET['updated'])) {
+    $message = 'BOOK UPDATED SUCCESSFULLY.';
+}
 
-        // Connect to the database
-        $dbConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+require_once 'includes/header.php';
+?>
 
-        // Check if form has been submitted
-        if (isset($_POST['submit'])) {
-            // Query to retrieve book title
-            $query = "SELECT title FROM Books WHERE title = '" . mysqli_real_escape_string($dbConnection, $_POST['titleInput']) . "'";
-            $result = mysqli_query($dbConnection, $query);
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">EDIT BOOK</h1>
+    <p class="page-subtitle">UPDATE AUTHOR NAME</p>
+  </div>
 
-            // Check if book title exists in database
-            if (mysqli_num_rows($result) > 0) {
-                // Query to update author name
-                $query = "UPDATE Books SET author = '" . mysqli_real_escape_string($dbConnection, $_POST['authorInput']) . "' WHERE title = '" . mysqli_real_escape_string($dbConnection, $_POST['titleInput']) . "'";
-                $result = mysqli_query($dbConnection, $query);
+  <div class="form-card" style="max-width:580px;">
+    <?php if ($message): ?>
+      <div class="alert alert-success"><?= $message ?></div>
+    <?php endif; ?>
 
-                // Check if query was successful
-                if ($result) {
-                    echo "<p>Author name updated successfully!</p>";
-                } else {
-                    echo "<p>Error updating author name: " . mysqli_error($dbConnection) . "</p>";
-                }
-            } else {
-                echo "<p>Book title not found in database.</p>";
-            }
-        }
-        ?>
-
-        <!-- Form to update author name -->
-        <div class="box">
-            <form action="updateBook.php" method="post" class="update-author-form">
-                <legend><b>Update Author Name</b></legend>
-                <!-- Input for book title -->
-                <label for="title">Book Title (existing):<span class="required">*</span></label>
-                <input list="books" id="title" name="titleInput" size="20" required /><br />
-                <!-- Input for new author name -->
-                <label for="author">New Author Name:<span class="required">*</span></label>
-                <input type="text" id="author" name="authorInput" size="14" required /><br />
-                <br />
-                <!-- Submit button -->
-                <input type="submit" name="submit" value="Submit Information!" />
-            </form>
-        </div>
-
-
-        <!-- Datalist for book titles -->
-        <datalist id="books">
-            <?php
-            // Query to retrieve book titles
-            $query = "SELECT title FROM Books";
-            $result = mysqli_query($dbConnection, $query);
-
-            // Display book titles
-            while ($row = mysqli_fetch_array($result)) {
-                echo "<option value='" . htmlspecialchars($row['title']) . "'></option>";
-            }
-            ?>
+    <form action="updateBook.php" method="POST">
+      <div class="form-group">
+        <label class="form-label" for="titleInput">BOOK TITLE (EXISTING) <span style="color:var(--accent)">*</span></label>
+        <input class="form-input" list="book-list" id="titleInput" name="titleInput"
+               placeholder="start typing a title..." required autocomplete="off">
+        <datalist id="book-list">
+          <?php while ($row = mysqli_fetch_assoc($result)): ?>
+            <option value="<?= htmlspecialchars($row['title']) ?>"></option>
+          <?php endwhile; ?>
         </datalist>
-    </div>
-</body>
+      </div>
 
-</html>
+      <div class="form-group">
+        <label class="form-label" for="authorInput">NEW AUTHOR NAME <span style="color:var(--accent)">*</span></label>
+        <input class="form-input" type="text" id="authorInput" name="authorInput"
+               placeholder="e.g. F. Scott Fitzgerald" required>
+      </div>
+
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <button type="submit" class="btn btn-primary">UPDATE BOOK</button>
+        <a href="displayBooks.php" class="btn btn-secondary">CANCEL</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<?php require_once 'includes/footer.php'; ?>

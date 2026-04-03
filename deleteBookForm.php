@@ -1,46 +1,66 @@
-<!DOCTYPE html>
-<html>
+<?php
+/*
+ * file: deleteBookForm.php
+ * description: form to select and delete a book from the library. admin only.
+ * uses a datalist for autocomplete and shows the current book list.
+ */
 
-<head>
-    <title>HTML form for Book Delete</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
+$base        = '';
+$pageTitle   = 'REMOVE BOOK';
+$pageDesc    = 'Remove a book from the Personal Library.';
+$currentPage = 'library';
+require_once 'includes/auth.php';
+require_once 'includes/db.php';
+requireAdmin();
 
-<body>
-    <div>
-        <h2>Book DELETE form</h2>
-        <?php
-        // Connect to the database
-        require_once('databaseConnectionVariables.php');
-        $dbConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$db     = getDB();
+$result = mysqli_query($db, 'SELECT id, title, author FROM Books ORDER BY title');
+mysqli_close($db);
 
-        // Query to get the book titles
-        $query = "SELECT title FROM Books";
-        $result = mysqli_query($dbConnection, $query);
-        $result2 = mysqli_query($dbConnection, $query);
+$message = '';
+if (isset($_GET['deleted'])) {
+    $message = 'BOOK DELETED SUCCESSFULLY.';
+}
 
-        // Display the list of books
-        echo "<p>These are the books in your database: </p>";
-        echo "<ul>";
-        while ($row = mysqli_fetch_array($result)) {
-            echo "<li>$row[title]</li>";
-        }
-        echo "</ul>";
+require_once 'includes/header.php';
+?>
 
-        // Create a datalist for book titles
-        echo "<datalist id='books'>";
-        while ($row = mysqli_fetch_array($result2)) {
-            echo "<option value='$row[title]'></option>";
-        }
-        echo "</datalist>";
-        ?>
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">REMOVE A BOOK</h1>
+    <p class="page-subtitle">DELETE FROM LIBRARY</p>
+  </div>
 
-        <!-- Form to delete a book -->
-        <form action="deleteBook.php" method="post">
-            Book Title to be deleted from database: <input list="books" name="title" size="20" /><br />
-            <input type="submit" name="SUBMIT" value="Delete Record!" />
-        </form>
-    </div>
-</body>
+  <div class="form-card" style="max-width:580px;">
+    <?php if ($message): ?>
+      <div class="alert alert-success"><?= $message ?></div>
+    <?php endif; ?>
 
-</html>
+    <?php if (mysqli_num_rows($result) === 0): ?>
+      <p class="text-muted">THE LIBRARY IS EMPTY — NOTHING TO DELETE.</p>
+    <?php else: ?>
+    <form action="deleteBook.php" method="POST"
+          onsubmit="return confirm('ARE YOU SURE YOU WANT TO DELETE THIS BOOK AND ALL ITS REVIEWS?');">
+      <div class="form-group">
+        <label class="form-label" for="title">BOOK TITLE <span style="color:var(--accent)">*</span></label>
+        <input class="form-input" list="book-list" id="title" name="title"
+               placeholder="start typing a title..." required autocomplete="off">
+        <datalist id="book-list">
+          <?php while ($row = mysqli_fetch_assoc($result)): ?>
+            <option value="<?= htmlspecialchars($row['title']) ?>">
+              <?= htmlspecialchars($row['author']) ?>
+            </option>
+          <?php endwhile; ?>
+        </datalist>
+      </div>
+
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <button type="submit" class="btn btn-danger">DELETE BOOK</button>
+        <a href="displayBooks.php" class="btn btn-secondary">CANCEL</a>
+      </div>
+    </form>
+    <?php endif; ?>
+  </div>
+</main>
+
+<?php require_once 'includes/footer.php'; ?>

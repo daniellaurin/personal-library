@@ -1,28 +1,27 @@
 <?php
 /*
- * Deleting a record from the Books Database
+ * file: deleteBook.php
+ * description: handler for deleteBookForm.php. uses a prepared statement to delete
+ * a book by title. cascades to Reviews due to the foreign key constraint. admin only.
  */
 
-// Connect to the database
-require_once('databaseConnectionVariables.php');
-$dbConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+require_once 'includes/auth.php';
+require_once 'includes/db.php';
+requireAdmin();
 
-// Get the book title from the form
-$bookTitle = trim($_POST['title']);
+$title = trim($_POST['title'] ?? '');
 
-// Table name
-$tableName = 'Books';
-
-// SQL query to delete the record
-$query = "DELETE FROM $tableName WHERE title = '$bookTitle'";
-
-// Execute the query
-if (mysqli_query($dbConnection, $query)) {
-    echo "The DELETE query was successfully executed!<br />";
-    echo "<a href='displayBooks.php'>View Books</a>";
-} else {
-    echo "The DELETE query could not be executed!" . mysqli_error($dbConnection);
+if (empty($title)) {
+    header('Location: deleteBookForm.php');
+    exit;
 }
 
-// Close the database connection
-mysqli_close($dbConnection);
+$db   = getDB();
+$stmt = mysqli_prepare($db, 'DELETE FROM Books WHERE title = ?');
+mysqli_stmt_bind_param($stmt, 's', $title);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
+mysqli_close($db);
+
+header('Location: deleteBookForm.php?deleted=1');
+exit;

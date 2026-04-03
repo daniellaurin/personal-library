@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Getting started with Personal Library - create an account and begin building your collection.">
+  <link rel="icon" href="../images/book.png" type="image/png">
+  <title>GETTING STARTED | PERSONAL LIBRARY WIKI</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../themes.js" data-base="../" defer></script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../index.php" class="nav-logo">📚 PERSONAL LIBRARY</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.php">HOME</a></li>
+      <li><a href="../bookSearch.php">SEARCH</a></li>
+      <li><a href="../displayBooks.php">LIBRARY</a></li>
+      <li><a href="../about.php">ABOUT</a></li>
+      <li><a href="index.html" class="active">HELP</a></li>
+      <li><a href="../media.php">AMBIANCE</a></li>
+      <li><a href="../login.php">LOGIN</a></li>
+    </ul>
+    <div class="season-switcher"></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">GETTING STARTED</h1>
+    <p class="page-subtitle">YOUR FIRST STEPS IN THE LIBRARY</p>
+  </div>
+
+  <div class="wiki-content">
+
+    <div class="panel">
+      <h2 class="section-title">STEP 1 - CREATE AN ACCOUNT</h2>
+      <ol class="wiki-steps">
+        <li>Click <strong>REGISTER</strong> in the top navigation bar.</li>
+        <li>Enter a username (letters, numbers, underscores - 3 to 50 characters).</li>
+        <li>Provide a valid email address.</li>
+        <li>Create a password of at least 8 characters and confirm it.</li>
+        <li>Click <strong>CREATE ACCOUNT</strong>. You will be automatically logged in.</li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">STEP 2 - SIGN IN</h2>
+      <ol class="wiki-steps">
+        <li>Click <strong>LOGIN</strong> in the navigation bar.</li>
+        <li>Enter the email and password you registered with.</li>
+        <li>Click <strong>SIGN IN</strong>. Your name will appear in the nav on success.</li>
+      </ol>
+      <p class="text-muted" style="margin-top:.75rem;font-size:.875rem;">
+        If your account has been disabled by an administrator, contact the site admin to reactivate it.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">STEP 3 - EXPLORE THE SITE</h2>
+      <p>Use the navigation bar at the top of every page to move around:</p>
+      <ul class="wiki-list">
+        <li><strong>HOME</strong> - landing page with library stats and recent additions.</li>
+        <li><strong>SEARCH</strong> - find books via the Google Books API and add them.</li>
+        <li><strong>LIBRARY</strong> - browse the full book collection.</li>
+        <li><strong>AMBIANCE</strong> - play ambient sounds while you read.</li>
+        <li><strong>PROFILE</strong> - view your personal reviews and reading stats (logged-in users).</li>
+        <li><strong>ADMIN</strong> - site management panel (admin users only).</li>
+        <li><strong>HELP</strong> - this wiki.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">SIGNING OUT</h2>
+      <p>Click <strong>LOGOUT</strong> in the navigation bar at any time. Your session will be cleared immediately.</p>
+    </div>
+
+    <div class="action-links">
+      <a href="index.html">← BACK TO WIKI</a>
+      <a href="managing-books.html">NEXT: MANAGING BOOKS →</a>
+    </div>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <p>Personal Library &copy; <?= date('Y') ?> &nbsp;&middot;&nbsp; Daniel Laurin built with ❤️ &nbsp;&middot;&nbsp; COMP-3250 &nbsp;&middot;&nbsp; University of Windsor</p>
+  </footer>
+</body>
+</html>

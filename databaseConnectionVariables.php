@@ -1,6 +1,6 @@
 <?php
 // Define the database connection constants here!
 define('DB_HOST', 'localhost');
-define('DB_USER', 'w24afd');     // your scweb username
-define('DB_PASSWORD', 'anvv8anvv8');  // See blackboard for 20-char password
-define('DB_NAME', 'w24afddb');   // username followed by lowercase db
+define('DB_USER', 'laurind_library');     // your scweb username
+define('DB_PASSWORD', 'frk45Xt7GS3uvYdzfxaD');  // See mycsweb for password
+define('DB_NAME', 'laurind_library');   // username followed by lowercase db

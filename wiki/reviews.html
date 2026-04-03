@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to write, edit, and read reviews and ratings in Personal Library.">
+  <link rel="icon" href="../images/book.png" type="image/png">
+  <title>REVIEWS & RATINGS | PERSONAL LIBRARY WIKI</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../themes.js" data-base="../" defer></script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../index.php" class="nav-logo">📚 PERSONAL LIBRARY</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.php">HOME</a></li>
+      <li><a href="../bookSearch.php">SEARCH</a></li>
+      <li><a href="../displayBooks.php">LIBRARY</a></li>
+      <li><a href="../about.php">ABOUT</a></li>
+      <li><a href="index.html" class="active">HELP</a></li>
+      <li><a href="../media.php">AMBIANCE</a></li>
+      <li><a href="../login.php">LOGIN</a></li>
+    </ul>
+    <div class="season-switcher"></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">REVIEWS & RATINGS</h1>
+    <p class="page-subtitle">SHARE YOUR READING EXPERIENCE</p>
+  </div>
+
+  <div class="wiki-content">
+
+    <div class="panel">
+      <h2 class="section-title">WRITING A REVIEW</h2>
+      <p>You must be logged in to write a review. One review per book per user.</p>
+      <ol class="wiki-steps">
+        <li>Find the book on the <a href="../displayBooks.php">LIBRARY</a> page or via <a href="../bookSearch.php">SEARCH</a>.</li>
+        <li>Click the book card to open its detail page.</li>
+        <li>Click <strong>⭐ WRITE A REVIEW</strong>.</li>
+        <li>Select your star rating (1 = worst, 5 = best) by clicking the stars.</li>
+        <li>Choose your <strong>Reading Format</strong>: Hardcover, Paperback, Ebook, or Audiobook.</li>
+        <li>Choose your <strong>Reading Status</strong>: Want to Read, Currently Reading, or Read.</li>
+        <li>Optionally write a review in the text box.</li>
+        <li>Click <strong>SAVE REVIEW</strong>. You will be returned to the book's page.</li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">EDITING YOUR REVIEW</h2>
+      <p>You can edit your review at any time:</p>
+      <ul class="wiki-list">
+        <li>Open the book's detail page and click <strong>✏️ EDIT YOUR REVIEW</strong>.</li>
+        <li>Or go to your <a href="../profile.php">PROFILE</a> and click <strong>EDIT REVIEW</strong> next to any entry.</li>
+      </ul>
+      <p class="text-muted" style="margin-top:.75rem;font-size:.875rem;">
+        Editing replaces your existing review - it does not create a duplicate.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">READING OPTIONS (PER BOOK)</h2>
+      <p>Each review includes two configurable options specific to your reading experience:</p>
+      <table class="data-table" style="margin-top:.75rem;">
+        <thead><tr><th>OPTION</th><th>CHOICES</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>READING FORMAT</td>
+            <td>Hardcover · Paperback · Ebook · Audiobook</td>
+          </tr>
+          <tr>
+            <td>READING STATUS</td>
+            <td>Want to Read · Currently Reading · Read</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">VIEWING REVIEWS</h2>
+      <p>On any book's detail page, scroll past the book info to see all community reviews listed newest-first. Each review shows:</p>
+      <ul class="wiki-list">
+        <li>Reviewer username</li>
+        <li>Star rating (★★★★☆)</li>
+        <li>Reading format and status badges</li>
+        <li>Date written</li>
+        <li>Review text (if provided)</li>
+      </ul>
+      <p style="margin-top:.75rem;">The book detail page also shows the average community rating and total review count.</p>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">YOUR READING HISTORY</h2>
+      <p>Visit your <a href="../profile.php">PROFILE</a> to see all books you have reviewed, along with your personal reading stats:</p>
+      <ul class="wiki-list">
+        <li>Total books reviewed</li>
+        <li>Average rating you give</li>
+        <li>Count by status (Read, Currently Reading, Want to Read)</li>
+      </ul>
+    </div>
+
+    <div class="action-links">
+      <a href="managing-books.html">← MANAGING BOOKS</a>
+      <a href="themes.html">NEXT: SEASONAL THEMES →</a>
+    </div>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <p>Personal Library &copy; <?= date('Y') ?> &nbsp;&middot;&nbsp; Daniel Laurin built with ❤️ &nbsp;&middot;&nbsp; COMP-3250 &nbsp;&middot;&nbsp; University of Windsor</p>
+  </footer>
+</body>
+</html>
