@@ -25,13 +25,8 @@
 
 <!-- TODO: Replace with a screenshot of your live dashboard -->
 <p align="center">
-  <img src="https://placehold.co/1200x650/1a1a2e/e8a838?text=📚+Dashboard+Screenshot+Here" alt="Dashboard Preview" width="100%" style="border-radius: 10px;">
+  <img src="images/dashboard.png" alt="Dashboard Preview" width="100%" style="border-radius: 10px;">
 </p>
-
-> 💡 **To add your screenshot:** Take a screenshot of your live site, save it as `images/dashboard.png`, and replace the placeholder above with:
-> ```md
-> <img src="images/dashboard.png" alt="Dashboard Preview" width="100%">
-> ```
 
 ---
 
