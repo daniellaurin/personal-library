@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to search for books, add them to the library, and manage the collection in Personal Library.">
+  <link rel="icon" href="../images/book.png" type="image/png">
+  <title>MANAGING BOOKS | PERSONAL LIBRARY WIKI</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../themes.js" data-base="../" defer></script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../index.php" class="nav-logo">📚 PERSONAL LIBRARY</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.php">HOME</a></li>
+      <li><a href="../bookSearch.php">SEARCH</a></li>
+      <li><a href="../displayBooks.php">LIBRARY</a></li>
+      <li><a href="../about.php">ABOUT</a></li>
+      <li><a href="index.html" class="active">HELP</a></li>
+      <li><a href="../media.php">AMBIANCE</a></li>
+      <li><a href="../login.php">LOGIN</a></li>
+    </ul>
+    <div class="season-switcher"></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">MANAGING BOOKS</h1>
+    <p class="page-subtitle">BUILD YOUR COLLECTION</p>
+  </div>
+
+  <div class="wiki-content">
+
+    <div class="panel">
+      <h2 class="section-title">SEARCHING FOR BOOKS (RECOMMENDED)</h2>
+      <p>The fastest way to add books with full details and cover images:</p>
+      <ol class="wiki-steps">
+        <li>Click <strong>SEARCH</strong> in the navigation bar.</li>
+        <li>Type a title, author name, or ISBN in the search box.</li>
+        <li>Press <strong>Enter</strong> or click <strong>SEARCH</strong>.</li>
+        <li>Results from the Google Books API appear as cards.</li>
+        <li>Click <strong>+ ADD TO LIBRARY</strong> on any result to add it instantly.</li>
+        <li>You will be taken to the book's detail page where you can write a review.</li>
+      </ol>
+      <div class="alert alert-info" style="margin-top:1rem;">
+        If the book is already in the library, clicking "Add to Library" will take you straight to its existing page instead of creating a duplicate.
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">MANUAL BOOK ENTRY</h2>
+      <p>To add a book that is hard to find in the API, use manual entry:</p>
+      <ol class="wiki-steps">
+        <li>Go to <strong>LIBRARY</strong> and click <strong>+ MANUAL ENTRY</strong> (requires login).</li>
+        <li>Fill in the title, author, publisher, and year.</li>
+        <li>Click <strong>ADD TO LIBRARY</strong>.</li>
+      </ol>
+      <p class="text-muted" style="margin-top:.75rem;font-size:.875rem;">
+        Manual entries will not have a cover image unless one is added via the API search later.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">BROWSING THE LIBRARY</h2>
+      <p>Click <strong>LIBRARY</strong> in the nav to see all books in the collection, sorted by most recently added. Each card shows:</p>
+      <ul class="wiki-list">
+        <li>Book cover image (from Google Books API)</li>
+        <li>Title and author</li>
+        <li>Average community rating (if reviews exist)</li>
+      </ul>
+      <p style="margin-top:.75rem;">Click any card to open the book's detail page with full metadata and all reviews.</p>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">UPDATING OR DELETING BOOKS (ADMIN ONLY)</h2>
+      <p>Admin users can manage the catalogue from the <a href="../admin/books.php">Admin Books page</a>:</p>
+      <ul class="wiki-list">
+        <li><strong>Delete</strong> - removes the book and all associated reviews permanently.</li>
+        <li><strong>Edit author</strong> - use the <a href="../updateBookForm.php">Edit Book</a> page to update the author name.</li>
+      </ul>
+      <div class="alert alert-error" style="margin-top:1rem;">
+        Deleting a book is irreversible. All reviews for that book will also be deleted.
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">UPDATING SITE IMAGES AND MEDIA</h2>
+      <p>To update the images and audio used by the site:</p>
+      <ul class="wiki-list">
+        <li><strong>Cover images</strong> - come from the Google Books API automatically. No manual uploads needed.</li>
+        <li><strong>Background / UI images</strong> - replace files in the <code>/images/</code> folder. Keep the same filenames.</li>
+      </ul>
+    </div>
+
+    <div class="action-links">
+      <a href="getting-started.html">← GETTING STARTED</a>
+      <a href="reviews.html">NEXT: REVIEWS →</a>
+    </div>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <p>Personal Library &copy; <?= date('Y') ?> &nbsp;&middot;&nbsp; Daniel Laurin built with ❤️ &nbsp;&middot;&nbsp; COMP-3250 &nbsp;&middot;&nbsp; University of Windsor</p>
+  </footer>
+</body>
+</html>

@@ -1,32 +1,57 @@
-<!DOCTYPE html>
-<html>
+<?php
+/*
+ * file: bookForm.php
+ * description: manual book entry form for adding a book without the google books api.
+ * satisfies rubric requirement 4 (dynamic html form #2 alongside addReview.php).
+ */
 
-<head>
-  <title>HTML Books Input Form</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
+$base        = '';
+$pageTitle   = 'ADD A BOOK';
+$pageDesc    = 'Manually add a book to the Personal Library.';
+$currentPage = 'library';
+require_once 'includes/auth.php';
+require_once 'includes/header.php';
+?>
 
-<body>
-  <div>
-    <h3>
-      Enter a Book that you wish to add to the database</h3>
-    <form action="bookInsert.php" method="post">
-      <fieldset>
-        <legend>Book Information</legend>
-        <label for="Title">Book Title:</label>
-        <input type="text" id="Title" name="Title" size="20" required />
-        <br />
-        <label for="Publisher">Publisher:</label>
-        <input type="text" id="Publisher" name="Publisher" size="30" required />
-        <br />
-        <label for="YearPublished">Year Published:</label>
-        <input type="text" id="YearPublished" name="YearPublished" size="6" required /><br />
-        <label for="Author">Author:</label>
-        <input type="text" id="Author" name="Author" size="20" required /><br />
-      </fieldset>
-      <input type="submit" name="submit" value="[+] Add Book" />
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">ADD A BOOK</h1>
+    <p class="page-subtitle">MANUAL ENTRY</p>
+  </div>
+
+  <div class="form-card" style="max-width:580px;">
+    <p class="text-muted" style="margin-bottom:1.25rem;font-size:.875rem;">
+      PREFER TO USE THE <a href="bookSearch.php">SEARCH PAGE</a> TO ADD BOOKS WITH COVER IMAGES AND AUTO-FILLED DETAILS.
+    </p>
+
+    <form action="bookInsert.php" method="POST">
+      <div class="form-group">
+        <label class="form-label" for="title">BOOK TITLE <span style="color:var(--accent)">*</span></label>
+        <input class="form-input" type="text" id="title" name="title" placeholder="e.g. The Great Gatsby" required autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="author">AUTHOR <span style="color:var(--accent)">*</span></label>
+        <input class="form-input" type="text" id="author" name="author" placeholder="e.g. F. Scott Fitzgerald" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="publisher">PUBLISHER</label>
+        <input class="form-input" type="text" id="publisher" name="publisher" placeholder="e.g. Scribner">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="yearPublished">YEAR PUBLISHED</label>
+        <input class="form-input" type="number" id="yearPublished" name="yearPublished"
+               placeholder="e.g. 1925" min="1000" max="<?= date('Y') ?>" style="max-width:180px;">
+      </div>
+
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <button type="submit" class="btn btn-primary">ADD TO LIBRARY</button>
+        <a href="displayBooks.php" class="btn btn-secondary">CANCEL</a>
+      </div>
     </form>
   </div>
-</body>
+</main>
 
-</html>
+<?php require_once 'includes/footer.php'; ?>

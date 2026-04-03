@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to switch between the three seasonal themes in Personal Library.">
+  <link rel="icon" href="../images/book.png" type="image/png">
+  <title>SEASONAL THEMES | PERSONAL LIBRARY WIKI</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../themes.js" data-base="../" defer></script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../index.php" class="nav-logo">📚 PERSONAL LIBRARY</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.php">HOME</a></li>
+      <li><a href="../bookSearch.php">SEARCH</a></li>
+      <li><a href="../displayBooks.php">LIBRARY</a></li>
+      <li><a href="../about.php">ABOUT</a></li>
+      <li><a href="index.html" class="active">HELP</a></li>
+      <li><a href="../media.php">AMBIANCE</a></li>
+      <li><a href="../login.php">LOGIN</a></li>
+    </ul>
+    <div class="season-switcher"></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <div class="page-header">
+    <h1 class="page-title">SEASONAL THEMES</h1>
+    <p class="page-subtitle">CHANGE THE LOOK OF THE LIBRARY</p>
+  </div>
+
+  <div class="wiki-content">
+
+    <div class="panel">
+      <h2 class="section-title">HOW TO SWITCH THEMES</h2>
+      <p>Look for the season emoji buttons in the top-right corner of the navigation bar on every page. Click the emoji for the season you want:</p>
+      <table class="data-table" style="margin-top:.75rem;">
+        <thead><tr><th>BUTTON</th><th>THEME</th><th>COLOURS</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="font-size:1.4rem;text-align:center;">🍂</td>
+            <td>AUTUMN</td>
+            <td>Warm brown background &middot; Amber accents</td>
+          </tr>
+          <tr>
+            <td style="font-size:1.4rem;text-align:center;">🌸</td>
+            <td>SPRING</td>
+            <td>Deep green background &middot; Pink accents</td>
+          </tr>
+          <tr>
+            <td style="font-size:1.4rem;text-align:center;">❄️</td>
+            <td>WINTER</td>
+            <td>Deep navy background &middot; Ice blue accents</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">ANIMATED SEASONAL EFFECTS</h2>
+      <p>Each theme includes animated particles that drift across the screen:</p>
+      <ul class="wiki-list">
+        <li>🍂 <strong>Autumn</strong> - leaves spin and drift sideways as they fall.</li>
+        <li>🌸 <strong>Spring</strong> - cherry blossom petals float down with a gentle sway.</li>
+        <li>❄️ <strong>Winter</strong> - snowflakes drift slowly and steadily downward.</li>
+      </ul>
+      <p style="margin-top:.75rem;">When you switch themes, new particles <em>slide in from the right side of the screen</em> before beginning their fall - a visual transition marking the change of season.</p>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">YOUR PREFERENCE IS SAVED</h2>
+      <p>The site remembers your chosen theme across pages and visits using your browser's <code>localStorage</code>. No account is needed - the preference is stored in your browser.</p>
+      <p style="margin-top:.75rem;">If you have never selected a theme, the site will automatically choose one based on the current calendar month:</p>
+      <ul class="wiki-list">
+        <li>March – May → Spring</li>
+        <li>September – November → Autumn</li>
+        <li>All other months → Winter</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">RESETTING YOUR THEME</h2>
+      <p>To reset to the default seasonal theme, open your browser's developer tools, go to <strong>Application → Local Storage</strong>, and delete the key <code>pl-season</code>. The site will auto-detect the season on next load.</p>
+    </div>
+
+    <div class="action-links">
+      <a href="reviews.html">← REVIEWS</a>
+      <a href="index.html">BACK TO WIKI HOME</a>
+    </div>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <p>Personal Library &copy; <?= date('Y') ?> &nbsp;&middot;&nbsp; Daniel Laurin built with ❤️ &nbsp;&middot;&nbsp; COMP-3250 &nbsp;&middot;&nbsp; University of Windsor</p>
+  </footer>
+</body>
+</html>

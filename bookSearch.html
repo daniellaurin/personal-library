@@ -1,68 +1,11 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Book Search</title>
-    <script>
-      function searchBooks() {
-        const query = document.getElementById("searchInput").value;
-        const apiKey = " " ; // Replace with your actual Google Books API key
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`;
-
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            const books = data.items;
-            const resultsContainer = document.getElementById("results");
-            resultsContainer.innerHTML = "";
-
-            if (books && books.length > 0) {
-              books.forEach((book) => {
-                const bookElement = document.createElement("div");
-                bookElement.classList.add("book");
-
-                const title = document.createElement("h3");
-                title.textContent = book.volumeInfo.title;
-                bookElement.appendChild(title);
-
-                const authors = document.createElement("p");
-                authors.textContent =
-                  "Authors: " + book.volumeInfo.authors.join(", ");
-                bookElement.appendChild(authors);
-
-                const description = document.createElement("p");
-                description.textContent = book.volumeInfo.description;
-                bookElement.appendChild(description);
-
-                const thumbnail = document.createElement("img");
-                thumbnail.src = book.volumeInfo.imageLinks
-                  ? book.volumeInfo.imageLinks.thumbnail
-                  : "";
-                bookElement.appendChild(thumbnail);
-
-                resultsContainer.appendChild(bookElement);
-              });
-            } else {
-              const noResults = document.createElement("p");
-              noResults.textContent = "No results found.";
-              resultsContainer.appendChild(noResults);
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    </script>
-    <style>
-      .book {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <input type="text" id="searchInput" placeholder="Search for books..." />
-    <button onclick="searchBooks()">Search</button>
-    <div id="results"></div>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=bookSearch.php">
+  <title>REDIRECTING...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="bookSearch.php">bookSearch.php</a>...</p>
+</body>
 </html>
